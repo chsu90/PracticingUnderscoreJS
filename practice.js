@@ -38,24 +38,6 @@ function map(collection, iteratee, context) {
     return result;
 }
 
-//map using forEach.///////////////////////////////////////////////////////////////////////////////////
-
-function map(collection, iteratee, context) {
-    var result = [];
-    forEach(collection, function(value, key, collection) {
-        result.push(iteratee.call(context, value, key, collection));
-    }, context);
-    return result;
-}
-
-var arr = [1,2,3,4];
-var obj = {one: 1, two: 2, three: 3};
-
-console.log(map(arr, function(num) {return num * 3}));
-//[3, 6, 9, 12]
-console.log(map(obj, function(num, key) {return num + key}));
-//["1one", "2two", "3three"]
-
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //If collection is an object and memo == undefined, memo = first property value.
@@ -239,19 +221,6 @@ console.log(filter(obj, function(value, key, collection) {
     return collection;
 }));
 //[1, 2, 3, 4, 5]
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////
-
-//filter using forEach //since forEach takes an obj or array, code is shorter.
-function filter(collection, predicate, context) {
-    var result = [];
-    forEach(collection, function(value, key, collection) {
-        if (predicate.call(context, value, key, collection)) {
-            result.push(value);
-        }
-    }, context);
-    return result;
-}
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
